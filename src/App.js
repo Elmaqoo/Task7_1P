@@ -9,18 +9,23 @@ import CustomerProfiles from './components/CustomerProfiles';
 import NewsletterSignup from './components/NewsletterSignup';
 import Footer from './components/Footer';
 import PrivacyAndTerms from './components/PrivacyAndTerms';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
+import Registration from "./components/Registration";
 
 function App() {
   return (
-    <div className="App">
-      <TopBar />
-      <Banner />
-      <FeaturedFreelancers />
-      <CustomerProfiles />
-      <NewsletterSignup />
-      <Footer />
-      <PrivacyAndTerms /> 
-    </div>
+    <Router>
+      <div className="App">
+        <TopBar />
+        <Routes>
+          <Route path="/" element={<><Banner /><FeaturedFreelancers /><CustomerProfiles /><NewsletterSignup /><Footer /><PrivacyAndTerms /></>} />
+          <Route path="/login" element={<Login />} /> 
+          <Route path="/register" element={<Registration />} /> 
+          {/* Other routes */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
